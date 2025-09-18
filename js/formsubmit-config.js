@@ -37,7 +37,4 @@ function createAttendanceFormData(user, attendanceRecord) {
   }
 }
 
-// Export for use in other files (if using modules)
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { FORMSUBMIT_CONFIG, createAttendanceFormData }
-}
+// The functions and configuration are now available globally in the browser
