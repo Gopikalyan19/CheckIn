@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckIn+ - Mark Attendance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white font-sans">
+    <!-- Header Navigation -->
+    <header class="w-full px-6 py-6">
+        <nav class="flex items-center justify-between max-w-7xl mx-auto">
+            <!-- Left side navigation -->
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Home</a>
+                <a href="rules.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Rules</a>
+                <a href="logout.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Logout</a>
+            </div>  
+            
+            <!-- Right side with user info and logout -->
+            <div class="flex items-center space-x-4">
+                <div class="text-sm text-gray-600 hidden md:block">
+                    Welcome, <span id="userName" class="font-medium text-gray-900">John Doe</span>
+                </div>
+               
+                <a href="https://www.linkedin.com/company/innerwhispers/">               
+            <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors flex items-center justify-center">                     
+                <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">                         
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>                     
+                </svg>                 
+            </button></a> 
+            <a href="https://www.instagram.com/inner__whispers_/">              
+            <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors flex items-center justify-center">                     
+                <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">                         
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>                     
+                </svg>                 
+            </button></a>             
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center justify-between min-h-[70vh] gap-12">
+                <!-- Left side - Illustration -->                 
+                <div class="flex-1 flex justify-center lg:justify-start">                     
+                    <div class="w-100 h-100 lg:w-100 lg:h-100">                         
+                        <!-- Hand-drawn style illustration of person with clock/calendar -->                         
+                        <img src="Images/work.png" 
+                            alt="Hand-drawn style illustration of person with attendance tracking" 
+                            class="w-full h-full" />
+                    </div>                 
+                </div>
+
+                <!-- Right side - Attendance Content -->
+                <div class="flex-1 text-center lg:text-left max-w-lg">
+                    <div class="mb-8">
+                        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                            Mark Your Attendance
+                        </h1>
+                        <p class="text-m text-gray-600 leading-relaxed">
+                            Please mark your presence for today.
+                        </p>
+                    </div>
+
+                    <!-- Attendance Form -->
+                    <div class="space-y-6">
+                        <!-- Status Message Container -->
+                        <div id="statusMessage" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                        </div>
+
+                        <!-- User Info Display -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                Logged in as
+                            </label>
+                            <div class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900">
+                                <div class="font-medium"><span id="displayUserName">John Doe</span> - <span id="displayInternId">INTERN001</span></div>
+                                <div class="text-sm text-gray-600">
+                                    <span id="displayDepartment">Software Development</span> | <span id="displayPosition">Full Stack Developer Intern</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Date & Time Display -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                Current Date & Time
+                            </label>
+                            <div class="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-900">
+                                <div id="currentDate">18 September 2025</div>
+                                <div class="text-sm text-gray-600" id="currentTime">10:42:15 AM</div>
+                            </div>
+                        </div>
+
+                        <!-- Mark Attendance Button -->
+                        <button 
+                            id="markAttendanceBtn"
+                            type="button"
+                            class="w-full inline-flex items-center justify-center px-8 py-3 bg-white border-2 border-gray-300 rounded-full text-gray-700 font-medium hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+                        >
+                            <span id="attendanceButtonText">Mark Attendance</span>
+                            <svg id="attendanceLoadingSpinner" class="hidden animate-spin ml-2 w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Footer Section -->
+                    <div class="mt-8 text-center">
+                        <p class="text-sm text-gray-600">
+                            Need help? 
+                            <a href="mailto:support@company.com" class="text-gray-700 hover:text-gray-900 transition-colors font-medium">
+                                Contact support
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll to top button -->
+    <div class="fixed bottom-8 right-8">
+        <button onclick="scrollToTop()" class="w-12 h-12 bg-white border border-gray-200 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group">
+            <svg class="w-5 h-5 text-gray-600 group-hover:text-gray-900 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Success Confirmation Modal -->
+    <div id="confirmationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center">
+            <div class="mb-6">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h2 class="text-xl font-semibold text-gray-900 mb-2">Attendance Marked!</h2>
+                <p class="text-gray-600">Your attendance has been successfully recorded.</p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4 mb-6 text-left">
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Name:</span>
+                        <span class="font-medium" id="confirmName">John Doe</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Intern ID:</span>
+                        <span class="font-medium" id="confirmInternId">INTERN001</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Department:</span>
+                        <span class="font-medium" id="confirmDepartment">Software Development</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Position:</span>
+                        <span class="font-medium" id="confirmPosition">Full Stack Developer Intern</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Date:</span>
+                        <span class="font-medium" id="confirmDate">18 September 2025</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Time:</span>
+                        <span class="font-medium" id="confirmTime">10:42:15 AM</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Email Status:</span>
+                        <span class="font-medium text-green-600" id="confirmEmailStatus">✓ Sent</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button 
+                id="closeConfirmation"
+                class="w-full px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+            >
+                Continue
+            </button>
+        </div>
+    </div>
+
+    <script>
+        
+        // FormSubmit configuration
+        const FORMSUBMIT_CONFIG = {
+            recipientEmail: "interns.innerwhispers@gmail.com", // Replace with your email
+            baseUrl: "https://formsubmit.co",
+            senderName: "CheckIn+ Attendance System"
+        };
+
+        // User data (loaded from login)
+        let currentUser = {
+            name: 'John Doe',
+            internId: 'INTERN001',
+            email: 'john.doe@company.com',
+            department: 'Software Development',
+            position: 'Full Stack Developer Intern'
+        };
+
+        // Attendance storage
+        let attendanceRecords = JSON.parse(localStorage.getItem('attendanceRecords') || '{}');
+
+        // Send attendance email via FormSubmit
+        async function sendAttendanceEmail(attendanceRecord) {
+            const formattedDate = new Date(attendanceRecord.date).toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "long", 
+                year: "numeric",
+            });
+
+            const formData = new FormData();
+            formData.append('_subject', `Attendance Marked Successfully - ${formattedDate}`);
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
+            formData.append('_autoresponse', 'Thank you! Your attendance has been recorded successfully.');
+            
+            // Attendance details
+            formData.append('Intern Name', currentUser.name);
+            formData.append('Intern ID', attendanceRecord.internId);
+            formData.append('Email', currentUser.email);
+            formData.append('Department', attendanceRecord.department);
+            formData.append('Position', attendanceRecord.position);
+            formData.append('Date', formattedDate);
+            formData.append('Time', attendanceRecord.time);
+            formData.append('Status', 'Present');
+            formData.append('System', 'CheckIn+ Attendance System');
+
+            try {
+                const response = await fetch(`${FORMSUBMIT_CONFIG.baseUrl}/${FORMSUBMIT_CONFIG.recipientEmail}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                return response.ok;
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                return false;
+            }
+        }
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.fixed.bottom-8');
+            if (window.pageYOffset > 300) {
+                scrollButton.style.opacity = '1';
+                scrollButton.style.pointerEvents = 'auto';
+            } else {
+                scrollButton.style.opacity = '0.5';
+                scrollButton.style.pointerEvents = 'none';
+            }
+        });
+
+        // Update date and time display
+        function updateDateTime() {
+            const now = new Date();
+            
+            const dateOptions = { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            };
+            const formattedDate = now.toLocaleDateString('en-US', dateOptions);
+            
+            const timeOptions = { 
+                hour: 'numeric', 
+                minute: '2-digit', 
+                second: '2-digit',
+                hour12: true 
+            };
+            const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+            
+            document.getElementById('currentDate').textContent = formattedDate;
+            document.getElementById('currentTime').textContent = formattedTime;
+        }
+
+        // Get today's date key for storage
+        function getTodayKey() {
+            const today = new Date();
+            return today.toISOString().split('T')[0];
+        }
+
+        // Show status message
+        function showStatus(message, isSuccess = false, isWarning = false) {
+            const statusElement = document.getElementById('statusMessage');
+            statusElement.textContent = message;
+            statusElement.classList.remove('hidden');
+            
+            if (isSuccess) {
+                statusElement.className = 'mb-6 px-4 py-3 rounded-lg text-sm bg-green-50 border border-green-200 text-green-700';
+            } else if (isWarning) {
+                statusElement.className = 'mb-6 px-4 py-3 rounded-lg text-sm bg-yellow-50 border border-yellow-200 text-yellow-700';
+            } else {
+                statusElement.className = 'mb-6 px-4 py-3 rounded-lg text-sm bg-red-50 border border-red-200 text-red-700';
+            }
+        }
+
+        // Hide status message
+        function hideStatus() {
+            document.getElementById('statusMessage').classList.add('hidden');
+        }
+
+        // Check if attendance is already marked for today
+        function isAttendanceMarked() {
+            const todayKey = getTodayKey();
+            return attendanceRecords[currentUser.internId] && 
+                   attendanceRecords[currentUser.internId][todayKey];
+        }
+
+        // Mark attendance function
+        async function markAttendance() {
+            const todayKey = getTodayKey();
+            const now = new Date();
+            
+            if (!attendanceRecords[currentUser.internId]) {
+                attendanceRecords[currentUser.internId] = {};
+            }
+            
+            const attendanceRecord = {
+                date: todayKey,
+                time: now.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true 
+                }),
+                timestamp: now.toISOString(),
+                internId: currentUser.internId,
+                name: currentUser.name,
+                email: currentUser.email,
+                department: currentUser.department || 'Not Specified',
+                position: currentUser.position || 'Intern'
+            };
+            
+            attendanceRecords[currentUser.internId][todayKey] = attendanceRecord;
+            localStorage.setItem('attendanceRecords', JSON.stringify(attendanceRecords));
+            
+            // Send confirmation email
+            const emailSent = await sendAttendanceEmail(attendanceRecord);
+            
+            return { record: attendanceRecord, emailSent };
+        }
+
+        // Show confirmation modal
+        function showConfirmationModal(record, emailSent) {
+            const modal = document.getElementById('confirmationModal');
+            const formattedDate = new Date(record.date).toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            
+            document.getElementById('confirmName').textContent = record.name;
+            document.getElementById('confirmInternId').textContent = record.internId;
+            document.getElementById('confirmDepartment').textContent = record.department;
+            document.getElementById('confirmPosition').textContent = record.position;
+            document.getElementById('confirmDate').textContent = formattedDate;
+            document.getElementById('confirmTime').textContent = record.time;
+            document.getElementById('confirmEmailStatus').textContent = emailSent ? '✓ Sent' : '✗ Failed';
+            document.getElementById('confirmEmailStatus').className = emailSent ? 
+                'font-medium text-green-600' : 'font-medium text-red-600';
+            
+            modal.classList.remove('hidden');
+        }
+
+        // Update UI based on attendance status
+        function updateAttendanceUI() {
+            const button = document.getElementById('markAttendanceBtn');
+            const buttonText = document.getElementById('attendanceButtonText');
+            
+            if (isAttendanceMarked()) {
+                const record = attendanceRecords[currentUser.internId][getTodayKey()];
+                button.disabled = true;
+                button.classList.remove('hover:border-gray-400', 'hover:bg-gray-50');
+                button.classList.add('bg-gray-100', 'border-gray-300', 'cursor-not-allowed');
+                buttonText.textContent = 'Already Marked';
+                
+                showStatus(` Attendance already marked today at ${record.time}.`, false, true);
+            } else {
+                button.disabled = false;
+                button.classList.add('hover:border-gray-400', 'hover:bg-gray-50');
+                button.classList.remove('bg-gray-100', 'cursor-not-allowed');
+                buttonText.textContent = 'Mark Attendance';
+                hideStatus();
+            }
+        }
+
+        // Initialize page
+        function initializePage() {
+            // Check if user is logged in
+            const userData = localStorage.getItem('currentUser');
+            if (!userData) {
+                alert('Please login first.');
+                window.location.href = 'login-form.html';
+                return;
+            }
+            
+            currentUser = JSON.parse(userData);
+            
+            // Set user info with enhanced details
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('displayUserName').textContent = currentUser.name;
+            document.getElementById('displayInternId').textContent = currentUser.internId;
+            document.getElementById('displayDepartment').textContent = currentUser.department || 'Not Specified';
+            document.getElementById('displayPosition').textContent = currentUser.position || 'Intern';
+            
+            // Update date/time
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            
+            // Update attendance UI
+            updateAttendanceUI();
+            
+            // Add animation to main content
+            const mainContent = document.querySelector('main');
+            if (mainContent) {
+                mainContent.style.opacity = '0';
+                mainContent.style.transform = 'translateY(20px)';
+                mainContent.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    mainContent.style.transform = 'translateY(0)';
+                }, 200);
+            }
+        }
+
+        // Mark attendance button click handler
+        document.getElementById('markAttendanceBtn').addEventListener('click', async function() {
+            if (isAttendanceMarked()) {
+                showStatus(' Attendance already marked today.', false, true);
+                return;
+            }
+            
+            // Show loading state
+            const buttonText = document.getElementById('attendanceButtonText');
+            const loadingSpinner = document.getElementById('attendanceLoadingSpinner');
+            const button = this;
+            
+            buttonText.textContent = 'Marking...';
+            loadingSpinner.classList.remove('hidden');
+            button.disabled = true;
+            
+            try {
+                const result = await markAttendance();
+                
+                // Show confirmation modal
+                showConfirmationModal(result.record, result.emailSent);
+                
+                updateAttendanceUI();
+            } catch (error) {
+                console.error('Attendance marking failed:', error);
+                showStatus(' Failed to mark attendance. Please try again.', false);
+                
+                // Reset button state on error
+                buttonText.textContent = 'Mark Attendance';
+                loadingSpinner.classList.add('hidden');
+                button.disabled = false;
+            }
+        });
+
+        // Confirmation modal close handler
+        document.getElementById('closeConfirmation').addEventListener('click', function() {
+            document.getElementById('confirmationModal').classList.add('hidden');
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('rememberedUser');
+                localStorage.removeItem('currentUser');
+                
+                alert('Logged out successfully. Redirecting to login page...');
+                window.location.href = 'login-form.html';
+            }
+        });
+
+        // Initialize page on load
+        window.addEventListener('load', initializePage);
+
+        // Check attendance status every minute
+        setInterval(updateAttendanceUI, 60000);
+    </script>
+</body>
+</html>

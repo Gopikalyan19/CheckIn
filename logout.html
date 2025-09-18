@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckIn+ - Logout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white font-sans">
+    <!-- Header Navigation -->
+    <header class="w-full px-6 py-6">
+        <nav class="flex items-center justify-between max-w-7xl mx-auto">
+            <!-- Left side navigation -->
+            <div class="flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Home</a>
+                <a href="rules.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Rules</a>
+                <a href="logout.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Logout</a>
+            </div>  
+            
+           <!-- Right side social icons -->             
+        <div class="flex items-center space-x-4"> 
+            <a href="https://www.linkedin.com/company/innerwhispers/">               
+            <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors flex items-center justify-center">                     
+                <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">                         
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>                     
+                </svg>                 
+            </button></a> 
+            <a href="https://www.instagram.com/inner__whispers_/">              
+            <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors flex items-center justify-center">                     
+                <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">                         
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>                     
+                </svg>                 
+            </button></a>            
+        </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row items-center justify-between min-h-[70vh] gap-12">
+                <!-- Left side - Illustration -->                 
+                <div class="flex-1 flex justify-center lg:justify-start">                     
+                    <div class="w-100 h-100 lg:w-100 lg:h-100">                         
+                        <img src="Images/dog-out.png" 
+                            alt="Hand-drawn style illustration of person logging out" 
+                            class="w-full h-full" />
+                    </div>                 
+                </div>
+
+                <!-- Right side - Logout Form -->
+                <div class="flex-1 text-center lg:text-left max-w-lg">
+                    <div class="mb-8">
+                        <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                            Daily Logout
+                        </h1>
+                        <p class="text-m text-gray-600 leading-relaxed">
+                           Please fill in your details and share your experience before you go.
+                        </p>
+                    </div>
+
+                    <!-- Real-time Display -->
+                    <div class="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <div class="text-sm text-gray-600 space-y-1">
+                            <div><span class="font-medium">Current Date:</span> <span id="currentDate">--</span></div>
+                            <div><span class="font-medium">Logout Time:</span> <span id="currentTime">--</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Logout Feedback Form -->
+                    <form id="logoutFeedbackForm" class="space-y-6">
+                        <!-- Error Message Container -->
+                        <div id="errorMessage" class="hidden bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                        </div>
+
+                        <!-- Success Message Container -->
+                        <div id="successMessage" class="hidden bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+                        </div>
+
+                        <!-- User Details Section -->
+                        <div class="space-y-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 text-left">Your Details</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700 text-left">
+                                        Full Name *
+                                    </label>
+                                    <input type="text" name="intern_name" id="internName" required
+                                        placeholder="Enter your Name"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-300 focus:border-gray-400 transition-all duration-200 text-gray-900">
+                                    <div id="nameError" class="hidden text-red-600 text-sm text-left"></div>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700 text-left">
+                                        Intern ID *
+                                    </label>
+                                    <input type="text" name="intern_id" id="internId" required
+                                        placeholder="Enter your ID"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-300 focus:border-gray-400 transition-all duration-200 text-gray-900">
+                                    <div id="idError" class="hidden text-red-600 text-sm text-left"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700 text-left">
+                                        Department *
+                                    </label>
+                                    <select name="department" id="department" required
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-300 focus:border-gray-400 transition-all duration-200 text-gray-900">
+                                        <option value="">Select Department</option>
+                                        <option value="Lead">Lead</option>
+                                        <option value="HR">HR</option>
+                                        <option value="AlgoWorks">AlgoWorks</option>
+                                        <option value="NexaCore">NexaCore</option>
+                                        <option value="SysMatrix">SysMatrix</option>
+                                        <option value="Video Editing">Video Editing</option>
+                                        <option value="AI">AI</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div id="departmentError" class="hidden text-red-600 text-sm text-left"></div>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-medium text-gray-700 text-left">
+                                        Position *
+                                    </label>
+                                    <input type="text" name="position" id="position" required
+                                        placeholder="e.g., Full Stack Developer Intern"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-300 focus:border-gray-400 transition-all duration-200 text-gray-900">
+                                    <div id="positionError" class="hidden text-red-600 text-sm text-left"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hidden fields for timestamp -->
+                        <input type="hidden" name="logout_date" id="hiddenLogoutDate">
+                        <input type="hidden" name="logout_time" id="hiddenLogoutTime">
+
+                        <!-- Overall Experience Rating -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                How was your overall experience today? *
+                            </label>
+                            <div class="flex space-x-2 text-2xl">
+                                <button type="button" class="star-rating text-gray-300 hover:text-yellow-400 transition-colors" data-rating="1">★</button>
+                                <button type="button" class="star-rating text-gray-300 hover:text-yellow-400 transition-colors" data-rating="2">★</button>
+                                <button type="button" class="star-rating text-gray-300 hover:text-yellow-400 transition-colors" data-rating="3">★</button>
+                                <button type="button" class="star-rating text-gray-300 hover:text-yellow-400 transition-colors" data-rating="4">★</button>
+                                <button type="button" class="star-rating text-gray-300 hover:text-yellow-400 transition-colors" data-rating="5">★</button>
+                            </div>
+                            <input type="hidden" name="experience_rating" id="experienceRating">
+                            <div id="ratingError" class="hidden text-red-600 text-sm text-left"></div>
+                        </div>
+
+                        <!-- Work Progress -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                Did you complete your assigned tasks today? *
+                            </label>
+                            <div class="space-y-2 text-left">
+                                <label class="flex items-center text-gray-600">
+                                    <input type="radio" name="work_progress" value="Yes" class="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-gray-300 mr-3">
+                                    <span>Yes, completed all tasks</span>
+                                </label>
+                                <label class="flex items-center text-gray-600">
+                                    <input type="radio" name="work_progress" value="Partially" class="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-gray-300 mr-3">
+                                    <span>Partially completed</span>
+                                </label>
+                                <label class="flex items-center text-gray-600">
+                                    <input type="radio" name="work_progress" value="No" class="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-gray-300 mr-3">
+                                    <span>No, couldn't complete</span>
+                                </label>
+                            </div>
+                            <div id="workProgressError" class="hidden text-red-600 text-sm text-left"></div>
+                        </div>
+
+                        <!-- Challenges Faced -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                Did you face any challenges today? *
+                            </label>
+                            <div class="space-y-2 text-left mb-3">
+                                <label class="flex items-center text-gray-600">
+                                    <input type="radio" name="challenges_faced" value="Yes" class="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-gray-300 mr-3" onchange="toggleChallengeDescription(true)">
+                                    <span>Yes</span>
+                                </label>
+                                <label class="flex items-center text-gray-600">
+                                    <input type="radio" name="challenges_faced" value="No" class="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-gray-300 mr-3" onchange="toggleChallengeDescription(false)">
+                                    <span>No</span>
+                                </label>
+                            </div>
+                            <div id="challengeDescription" class="hidden">
+                                <textarea name="challenge_details" placeholder="Please describe briefly..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-300 focus:border-gray-400 transition-all duration-200 text-gray-900" rows="3"></textarea>
+                            </div>
+                            <div id="challengesError" class="hidden text-red-600 text-sm text-left"></div>
+                        </div>
+
+                        <!-- Learning & Growth -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                What did you learn or improve today? (Optional)
+                            </label>
+                            <textarea name="learning_growth" placeholder="Share your learning experience..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-300 focus:border-gray-400 transition-all duration-200 text-gray-900" rows="3"></textarea>
+                        </div>
+
+                        <!-- Support Needed -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                Do you need any help or guidance from your mentor/HR? *
+                            </label>
+                            <div class="space-y-2 text-left mb-3">
+                                <label class="flex items-center text-gray-600">
+                                    <input type="radio" name="support_needed" value="Yes" class="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-gray-300 mr-3" onchange="toggleSupportDescription(true)">
+                                    <span>Yes</span>
+                                </label>
+                                <label class="flex items-center text-gray-600">
+                                    <input type="radio" name="support_needed" value="No" class="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-gray-300 mr-3" onchange="toggleSupportDescription(false)">
+                                    <span>No</span>
+                                </label>
+                            </div>
+                            <div id="supportDescription" class="hidden">
+                                <textarea name="support_details" placeholder="Please specify what help you need..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-300 focus:border-gray-400 transition-all duration-200 text-gray-900" rows="3"></textarea>
+                            </div>
+                            <div id="supportError" class="hidden text-red-600 text-sm text-left"></div>
+                        </div>
+
+                        <!-- Mood Check -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700 text-left">
+                                How are you feeling at the end of the day? *
+                            </label>
+                            <div class="flex justify-start space-x-4 flex-wrap gap-2">
+                                <button type="button" class="mood-emoji p-2 border border-gray-300 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 text-center" data-mood="Energized">
+                                    <div class="text-2xl">😀</div>
+                                    <div class="text-xs text-gray-600 mt-1">Energized</div>
+                                </button>
+                                <button type="button" class="mood-emoji p-2 border border-gray-300 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 text-center" data-mood="Good">
+                                    <div class="text-2xl">🙂</div>
+                                    <div class="text-xs text-gray-600 mt-1">Good</div>
+                                </button>
+                                <button type="button" class="mood-emoji p-2 border border-gray-300 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 text-center" data-mood="Neutral">
+                                    <div class="text-2xl">😐</div>
+                                    <div class="text-xs text-gray-600 mt-1">Neutral</div>
+                                </button>
+                                <button type="button" class="mood-emoji p-2 border border-gray-300 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 text-center" data-mood="Tired">
+                                    <div class="text-2xl">😴</div>
+                                    <div class="text-xs text-gray-600 mt-1">Tired</div>
+                                </button>
+                                <button type="button" class="mood-emoji p-2 border border-gray-300 rounded-lg hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 text-center" data-mood="Stressed">
+                                    <div class="text-2xl">😔</div>
+                                    <div class="text-xs text-gray-600 mt-1">Stressed</div>
+                                </button>
+                            </div>
+                            <input type="hidden" name="end_day_mood" id="endDayMood">
+                            <div id="moodError" class="hidden text-red-600 text-sm text-left"></div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button 
+                            type="submit"
+                            class="w-full inline-flex items-center justify-center px-8 py-3 bg-white border-2 border-gray-300 rounded-full text-gray-700 font-medium hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2"
+                        >
+                            <span id="buttonText">Submit Feedback</span>
+                            <svg id="loadingSpinner" class="hidden animate-spin ml-2 w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                            <button type="button" onclick="window.location.href='login-form.html'" class="flex-1 inline-flex items-center justify-center px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                                Log in Again
+                            </button>
+                            <button type="button" onclick="window.location.href='index.html'" class="flex-1 inline-flex items-center justify-center px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+                                Back to Welcome
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Footer Section -->
+                    <div class="mt-8 text-center">
+                        <p class="text-sm text-gray-600">
+                            Need help? 
+                            <a href="mailto:support@company.com" class="text-gray-700 hover:text-gray-900 transition-colors font-medium">
+                                Contact support
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Thank You!</h3>
+                <p class="text-gray-600 mb-6">Your feedback has been submitted successfully. We appreciate your input and will use it to improve your internship experience!</p>
+                <button onclick="closeSuccessModal()" class="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const FORMSUBMIT_CONFIG = {
+            recipientEmail: "interns.innerwhispers@gmail.com", // Replace with your email
+            baseUrl: "https://formsubmit.co"
+        };
+
+        function updateRealTimeTimestamp() {
+            const now = new Date();
+            const currentDate = now.toLocaleDateString('en-US', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            const currentTime = now.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            
+            document.getElementById('currentDate').textContent = currentDate;
+            document.getElementById('currentTime').textContent = currentTime;
+            document.getElementById('hiddenLogoutDate').value = now.toISOString().split('T')[0];
+            document.getElementById('hiddenLogoutTime').value = currentTime;
+        }
+
+        async function sendLogoutFeedbackEmail(feedbackData) {
+            const formData = new FormData();
+            
+            formData.append('_subject', `Daily Logout Feedback - ${feedbackData.internName} (${feedbackData.internId})`);
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
+            formData.append('_autoresponse', `Hi ${feedbackData.internName}, thank you for your daily feedback!`);
+            
+            // Add all feedback data
+            Object.keys(feedbackData).forEach(key => {
+                if (feedbackData[key]) {
+                    formData.append(key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()), feedbackData[key]);
+                }
+            });
+
+            try {
+                const response = await fetch(`${FORMSUBMIT_CONFIG.baseUrl}/${FORMSUBMIT_CONFIG.recipientEmail}`, {
+                    method: 'POST',
+                    body: formData
+                });
+                return response.ok;
+            } catch (error) {
+                console.error('Email sending failed:', error);
+                return false;
+            }
+        }
+
+        function validateForm() {
+            const requiredFields = [
+                { id: 'internName', error: 'nameError', message: 'Please enter your full name.' },
+                { id: 'internId', error: 'idError', message: 'Please enter your intern ID.' },
+                { id: 'department', error: 'departmentError', message: 'Please select your department.' },
+                { id: 'position', error: 'positionError', message: 'Please enter your position.' },
+                { id: 'experienceRating', error: 'ratingError', message: 'Please rate your experience.' },
+                { id: 'endDayMood', error: 'moodError', message: 'Please select your mood.' }
+            ];
+
+            const radioFields = [
+                { name: 'work_progress', error: 'workProgressError', message: 'Please select work progress.' },
+                { name: 'challenges_faced', error: 'challengesError', message: 'Please indicate if you faced challenges.' },
+                { name: 'support_needed', error: 'supportError', message: 'Please indicate if you need support.' }
+            ];
+
+            let hasErrors = false;
+
+            // Clear previous errors
+            document.querySelectorAll('[id$="Error"]').forEach(el => el.classList.add('hidden'));
+
+            // Validate text fields
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field.id);
+                if (!element.value.trim()) {
+                    showError(field.error, field.message);
+                    hasErrors = true;
+                }
+            });
+
+            // Validate radio fields
+            radioFields.forEach(field => {
+                const selected = document.querySelector(`input[name="${field.name}"]:checked`);
+                if (!selected) {
+                    showError(field.error, field.message);
+                    hasErrors = true;
+                }
+            });
+
+            return !hasErrors;
+        }
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+
+        function showMessage(elementId, message) {
+            const messageElement = document.getElementById(elementId);
+            messageElement.textContent = message;
+            messageElement.classList.remove('hidden');
+        }
+
+        function hideMessage(elementId) {
+            document.getElementById(elementId).classList.add('hidden');
+        }
+
+        document.getElementById('logoutFeedbackForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            hideMessage('errorMessage');
+            hideMessage('successMessage');
+            
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Show loading state
+            const buttonText = document.getElementById('buttonText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const submitButton = document.querySelector('button[type="submit"]');
+            
+            buttonText.textContent = 'Submitting...';
+            loadingSpinner.classList.remove('hidden');
+            submitButton.disabled = true;
+            
+            try {
+                const feedbackData = {
+                    internName: document.getElementById('internName').value.trim(),
+                    internId: document.getElementById('internId').value.trim(),
+                    department: document.getElementById('department').value,
+                    position: document.getElementById('position').value.trim(),
+                    logoutDate: document.getElementById('hiddenLogoutDate').value,
+                    logoutTime: document.getElementById('hiddenLogoutTime').value,
+                    experienceRating: document.getElementById('experienceRating').value + '/5 stars',
+                    workProgress: document.querySelector('input[name="work_progress"]:checked').value,
+                    challengesFaced: document.querySelector('input[name="challenges_faced"]:checked').value,
+                    challengeDetails: document.querySelector('textarea[name="challenge_details"]')?.value || '',
+                    learningGrowth: document.querySelector('textarea[name="learning_growth"]').value || 'Not provided',
+                    supportNeeded: document.querySelector('input[name="support_needed"]:checked').value,
+                    supportDetails: document.querySelector('textarea[name="support_details"]')?.value || '',
+                    endDayMood: document.getElementById('endDayMood').value
+                };
+                
+                const emailSent = await sendLogoutFeedbackEmail(feedbackData);
+                
+                if (emailSent) {
+                    document.getElementById('successModal').classList.remove('hidden');
+                } else {
+                    showMessage('errorMessage', 'Failed to send feedback email. Please try again.');
+                    resetButtonState();
+                }
+            } catch (error) {
+                console.error('Feedback submission failed:', error);
+                showMessage('errorMessage', 'Failed to submit feedback. Please try again.');
+                resetButtonState();
+            }
+        });
+
+        function resetButtonState() {
+            document.getElementById('buttonText').textContent = 'Submit Feedback';
+            document.getElementById('loadingSpinner').classList.add('hidden');
+            document.querySelector('button[type="submit"]').disabled = false;
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500);
+        }
+
+        document.querySelectorAll('.star-rating').forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = this.getAttribute('data-rating');
+                document.getElementById('experienceRating').value = rating;
+                
+                document.querySelectorAll('.star-rating').forEach((s, index) => {
+                    if (index < rating) {
+                        s.classList.remove('text-gray-300');
+                        s.classList.add('text-yellow-400');
+                    } else {
+                        s.classList.remove('text-yellow-400');
+                        s.classList.add('text-gray-300');
+                    }
+                });
+            });
+        });
+
+        document.querySelectorAll('.mood-emoji').forEach(emoji => {
+            emoji.addEventListener('click', function() {
+                document.querySelectorAll('.mood-emoji').forEach(e => {
+                    e.classList.remove('border-gray-900', 'bg-gray-100');
+                    e.classList.add('border-gray-300');
+                });
+                
+                this.classList.remove('border-gray-300');
+                this.classList.add('border-gray-900', 'bg-gray-100');
+                
+                document.getElementById('endDayMood').value = this.getAttribute('data-mood');
+            });
+        });
+
+        function toggleChallengeDescription(show) {
+            const description = document.getElementById('challengeDescription');
+            if (show) {
+                description.classList.remove('hidden');
+            } else {
+                description.classList.add('hidden');
+                description.querySelector('textarea').value = '';
+            }
+        }
+
+        function toggleSupportDescription(show) {
+            const description = document.getElementById('supportDescription');
+            if (show) {
+                description.classList.remove('hidden');
+            } else {
+                description.classList.add('hidden');
+                description.querySelector('textarea').value = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateRealTimeTimestamp();
+            setInterval(updateRealTimeTimestamp, 1000);
+        });
+    </script>
+</body>
+</html>
