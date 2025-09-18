@@ -1,4 +1,4 @@
-const FORMSUBMIT_CONFIG = {
+const FORMSUBMIT_CONFIG = { 
   // Replace with your email address where you want to receive attendance notifications
   recipientEmail: "interns.innerwhispers@gmail.com",
 
